@@ -28,9 +28,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Local apps
     'store',
+    # 3rd party apps
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -39,6 +42,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+'''<--------------------------------------------------------------------------------------->'''
+# django-debug-toolbar settings
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+'''<--------------------------------------------------------------------------------------->'''
 
 ROOT_URLCONF = 'config.urls'
 
