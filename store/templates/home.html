@@ -8,5 +8,14 @@
     <h1>Welcome to the Store</h1>
     <p>This is the home page of the store application.</p>
     <p>Feel free to explore our products and services.</p>
+    <ul>
+        {% for product in products %}
+            <li> 
+            <b> {{ product.name }} </b>
+            <p> id: {{ product.id }}  </p>
+            <p> price: {{ product.price }} </p>
+            </li> 
+        {% endfor %}
+    </ul>
 </body>
 </html>
