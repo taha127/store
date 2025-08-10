@@ -5,7 +5,7 @@ import debug_toolbar
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('store.urls')),
+    path('store/', include('store.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += [
