@@ -5,6 +5,7 @@ class Category(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=500, blank=True)
     top_product = models.ForeignKey(
+        'Product', on_delete=models.SET_NULL, blank=True, null=True, related_name='+')
 
     def __str__(self):
         return self.title
@@ -26,7 +27,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=6, decimal_places=2)
     inventory = models.PositiveIntegerField()
-    detatime_created = models.DateTimeField(auto_now_add=True)
+    datetime_created = models.DateTimeField(auto_now_add=True)
     datetime_modified = models.DateTimeField(auto_now=True)
     discounts = models.ManyToManyField(Discount, blank=True)
 
@@ -87,7 +88,8 @@ class Cart(models.Model):
 class CartItem(models.Model):
     cart = models.ForeignKey(
         Cart, on_delete=models.CASCADE, related_name='items')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='cart_items')
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name='cart_items')
     quantity = models.PositiveSmallIntegerField()
 
     class Meta:
